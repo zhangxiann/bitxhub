@@ -38,6 +38,8 @@ func NewChainBrokerService(api api.CoreAPI, config *repo.Config, genesis *repo.G
 		grpc_middleware.WithUnaryServerChain(ratelimit.UnaryServerInterceptor(rateLimiter), grpc_prometheus.UnaryServerInterceptor),
 		grpc_middleware.WithStreamServerChain(ratelimit.StreamServerInterceptor(rateLimiter), grpc_prometheus.StreamServerInterceptor),
 		grpc.MaxConcurrentStreams(1000),
+		grpc.MaxRecvMsgSize(100 * 1024 * 1024),
+		grpc.MaxSendMsgSize(100 * 1024 * 1024),
 		grpc.InitialWindowSize(10 * 1024 * 1024),
 		grpc.InitialConnWindowSize(100 * 1024 * 1024),
 	}
