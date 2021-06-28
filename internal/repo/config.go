@@ -31,6 +31,8 @@ const (
 	DefaultParticipateThreshold = 0.75
 	// bitxhub DID root prefix
 	BitxhubRootPrefix = "did:bitxhub"
+	//Passwd
+	DefaultPasswd = "bitxhub"
 )
 
 type Config struct {
